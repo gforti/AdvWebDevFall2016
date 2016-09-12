@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style type="text/css">
+            
+            p {
+                margin-bottom: 3em;
+            }
+            
+            a {                
+                border: 1px solid black;
+                padding: 0.5em;
+            }
+            
+            a:hover {
+                background-color: #000;
+                color: #fff;
+            }
+            
+            .size-12 {
+                font-size: 12px;
+            }
+            
+            .size-22 {
+                font-size: 22px;
+            }
+            
+            .size-32 {
+                font-size: 32px;
+            }
+        </style>
+    </head>
+    <body>
+        <p>The text size on this page will increase in pixels based on the link below.</p>
+        
+        
+        <a href="#" class="size-12">12</a>
+        <a href="#" class="size-22">22</a>
+        <a href="#" class="size-32">32</a>
+        
+        <script type="text/javascript">
+            
+            function makeSizer(size) {
+                return function() {
+                  document.body.style.fontSize = size + 'px';
+                };
+            }
+
+            var size12 = makeSizer(12);
+            var size22 = makeSizer(22);
+            var size32 = makeSizer(32);
+
+            document.querySelector('.size-12').addEventListener('click', size12);
+            document.querySelector('.size-22').addEventListener('click', size22);
+            document.querySelector('.size-32').addEventListener('click', size32);
+            
+        </script>
+    </body>
+</html>

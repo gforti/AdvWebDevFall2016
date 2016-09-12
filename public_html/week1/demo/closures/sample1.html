@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <p>Open browser console</p>
+        
+        <script type="text/javascript">
+            
+            function makeAdder(x) {
+                return function(y) {
+                  return x + y;
+                };
+            }
+
+            var add5 = makeAdder(5);
+            var add10 = makeAdder(10);
+
+            console.log( add5(2) );  // 7
+            console.log( add10(2) ); // 12
+        </script>
+    </body>
+</html>
