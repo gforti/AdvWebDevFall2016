@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+         <p>Open browser console</p>
+        
+        <script type="text/javascript">
+            
+            var basicJSON = {
+                'userId': 1,
+                'id': 1,
+                'title': 'quo adipisci enim quam ut ab',
+                'completed': true
+            };
+            
+            
+            console.log( JSON.stringify(basicJSON) );
+            
+            console.log( JSON.parse('{"userId": 1,"id": 1,"title": "quo adipisci enim quam ut ab","completed": true}') );
+            
+            for ( var key in basicJSON ) {
+                console.log(key, basicJSON[key] );
+            }
+            
+            /* Use this to support older browsers */
+            for ( var key in basicJSON ) {
+                if ( basicJSON.hasOwnProperty(key) ) {
+                    console.log(key, basicJSON[key] );
+                }
+            }
+            
+        </script>
+    </body>
+</html>
