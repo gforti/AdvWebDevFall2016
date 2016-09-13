@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <p>Open browser console</p>
+        
+        <script type="text/javascript">
+            
+            function Fruit(){ 
+                var slices = 0; 
+
+                this.getSlices = function(){ 
+                  return slices; 
+                }; 
+                this.slice = function(){ 
+                  slices++; 
+                }; 
+            } 
+            
+            var apple = new Fruit(); 
+            apple.slice(); 
+ 
+            console.log( 'apple.getSlices() === 1', apple.getSlices() === 1 , 'We can access the variables that are set with the function using this');
+            console.log( 'apple.slices ===', apple.slices , 'We cannot access a private variable.')
+        </script>
+    </body>
+</html>
