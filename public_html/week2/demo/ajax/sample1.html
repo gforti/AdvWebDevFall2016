@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        
+        <button>Make AJAX Call</button>
+        <p>Open browser console</p>
+        
+        <script type="text/javascript">
+            
+            document.querySelector('button').addEventListener('click', testAJAX);
+            
+            function reqListener() {
+                console.log(this.responseText);
+            }
+
+            function testAJAX() {
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.addEventListener('load', reqListener);
+                xmlhttp.open('GET', '../data/todo.json');
+                xmlhttp.send();
+            }
+            
+        </script>
+    </body>
+</html>
