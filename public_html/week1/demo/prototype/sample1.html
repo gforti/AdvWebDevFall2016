@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>TODO write content</div>
+        
+        <script type="text/javascript">
+            
+            /* functions are first class objects in JS */
+            function Car(){}
+            
+            Car.prototype.run = function(){
+                return true;
+            }
+            
+            
+            /* does not work */
+            var car1 = Car();
+             console.log(car1);
+             
+            /* create a new instane of the object and the prototype functions will be applied */            
+            var car2 = new Car();
+            console.log(car2);
+        </script>
+    </body>
+</html>
