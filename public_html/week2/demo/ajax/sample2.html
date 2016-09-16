@@ -8,8 +8,12 @@
     <body>
         
         
-      <button style="cursor: pointer; text-decoration: underline">
+      <button class="good" style="cursor: pointer; text-decoration: underline">
         Make a request
+      </button>
+        
+        <button class="bad" style="cursor: pointer; text-decoration: underline">
+        Make a bad request
       </button>
         
         <p>Open browser console</p>
@@ -17,7 +21,8 @@
       <script type="text/javascript">
           
         var httpRequest;
-        document.querySelector('button').addEventListener('click', makeRequest.bind(null, '../data/todo.json') );
+        document.querySelector('button.good').addEventListener('click', makeRequest.bind(null, '../data/todo.json') );
+        document.querySelector('button.bad').addEventListener('click', makeRequest.bind(null, 'data/todo.json') );
 
         function makeRequest(url) {
             
@@ -34,6 +39,13 @@
 
         function alertContents() {
             /* this is refrenced to httpRequest */
+            /*  States (uses State Pattern)
+             *  DONE : 4
+             *  HEADERS_RECEIVED : 2
+             *  LOADING : 3
+             *  OPENED : 1
+              * UNSENT : 0
+             */
             if ( this.readyState === XMLHttpRequest.DONE ) {
               if ( this.status === 200 ) {
                 console.log( this.responseText );

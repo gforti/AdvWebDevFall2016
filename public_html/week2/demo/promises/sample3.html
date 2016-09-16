@@ -45,7 +45,7 @@
                     client.open(method, uri);
                     client.send();
 
-                    client.onload = function () {
+                    client.addEventListener('load', function () {
                       if (this.status >= 200 && this.status < 300) {
                         // Performs the function "resolve" when this.status is equal to 2xx
                         resolve(this.response);
@@ -53,10 +53,11 @@
                         // Performs the function "reject" when this.status is different than 2xx
                         reject(this.statusText);
                       }
-                    };
-                    client.onerror = function () {
+                    });
+                    
+                    client.addEventListener('error', function () {
                       reject(this.statusText);
-                    };
+                    });
                     
                   });
 

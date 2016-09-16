@@ -8,20 +8,33 @@
     <body>
         
         <button>Make AJAX Call</button>
+        <button>Make Bad AJAX Call</button>
         <p>Open browser console</p>
         
         <script type="text/javascript">
             
-            document.querySelector('button').addEventListener('click', testAJAX);
+            document.querySelector('button:first-child').addEventListener('click', testAJAX.bind(null, '../data/todo.json'));
+            document.querySelector('body > button:nth-child(2)').addEventListener('click', testAJAX.bind(null, 'data/todo.json'));
             
-            function reqListener() {
+            function reqListener(type) {
+                console.log(type);
+                console.log(this);
                 console.log(this.responseText);
+                console.log(this.status);
+                console.log(this.statusText);
+                console.log(this.readyState);
+                console.log(this.responseURL);
+                console.log(this.DONE);
             }
+            
 
-            function testAJAX() {
-                var xmlhttp = new XMLHttpRequest();
-                xmlhttp.addEventListener('load', reqListener);
-                xmlhttp.open('GET', '../data/todo.json');
+            function testAJAX(url) {
+                console.log(url);
+                console.log('called');
+                var xmlhttp = new XMLHttpRequest();               
+                xmlhttp.addEventListener('load', reqListener.bind(xmlhttp, 'load'));
+                xmlhttp.addEventListener('error', reqListener.bind(xmlhttp, 'error'));
+                xmlhttp.open('GET', url);
                 xmlhttp.send();
             }
             
