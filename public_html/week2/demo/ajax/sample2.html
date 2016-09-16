@@ -4,15 +4,21 @@
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style type="text/css">
+            button {
+                cursor: pointer; 
+                text-decoration: underline;
+            }
+        </style>
     </head>
     <body>
         
         
-      <button class="good" style="cursor: pointer; text-decoration: underline">
+      <button class="good">
         Make a request
       </button>
         
-        <button class="bad" style="cursor: pointer; text-decoration: underline">
+      <button class="bad">
         Make a bad request
       </button>
         
@@ -28,11 +34,12 @@
             
           httpRequest = new XMLHttpRequest();
 
-          if (!httpRequest) {
+          if ( !httpRequest ) {
             console.log('Giving up :( Cannot create an XMLHTTP instance');
             return false;
           }
-          httpRequest.onreadystatechange = alertContents;
+          
+          httpRequest.addEventListener('readystatechange', alertContents);
           httpRequest.open('GET', url);
           httpRequest.send();
         }
