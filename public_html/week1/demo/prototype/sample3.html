@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+       <p>Open browser console</p>
+        
+        <script type="text/javascript">
+            
+            /* functions are first class objects in JS */
+            function Car(model, color, doors){
+                
+                /* we use underscore to let developers know we do not want to access
+                 * the properties directly 
+                 */
+                this._properties = {
+                    'model' : '',
+                    'color' : '',
+                    'doors' : 0,
+                    'driving' : false
+                };
+                
+                //Object.freeze(this._properties);
+                //Object.seal(this._properties);
+                this.setModel(model);
+                this.setColor(color);
+                this.setDoors(doors);
+                     
+            }
+            
+            Car.prototype = {
+                'run' : function() {
+                    return 'The car runing is ' + this._properties.model;
+                },
+                'drive' : function() {
+                    this._properties.driving = true;
+                    return this;
+                },
+                'stop' : function() {
+                    this._properties.driving = false;
+                    return this;
+                },
+                'setModel' : function(model) {
+                    /* You can use the protoype of built-in JavaScript objects too! */
+                    if ( Object.prototype.toString.call(model) === "[object String]" ) {
+                        this._properties.model = model;
+                    } else {
+                        throw new Error('setModel requires a String.');
+                    }                    
+                    return this;
+                },
+                'getModel' : function() {
+                    return this._properties.model;
+                },
+                'setColor' : function(color) {
+                    if ( Object.prototype.toString.call(color) === "[object String]" ) {
+                        this._properties.color = color;
+                    } else {
+                        throw new Error('setColor requires a String.');
+                    }                    
+                    return this;
+                },
+                'getColor' : function() {
+                    return this._properties.color;
+                },
+                'setDoors' : function(doors) {
+                    if ( Object.prototype.toString.call(doors) === "[object Number]" ) {
+                        this._properties.doors = doors;
+                    } else {
+                        throw new Error('setDoors requires a Number.');
+                    }                    
+                    return this;
+                },
+                'getDoors' : function() {
+                    return this._properties.doors;
+                }
+            };
+            
+           
+                                       
+             
+            /* create a new instane of the object and the prototype functions will be applied */            
+            var car1 = new Car('Ford', 'Blue', 2);
+            console.log(car1);
+            console.log(car1.getModel());
+            console.log(car1.getColor());
+            console.log(car1.getDoors());
+            
+            /* But you cannot stop developers from accessing the _properties object
+             * or stop them from adding properties unless you seal the object
+             */
+            
+            
+            console.log('car1._properties.model', car1._properties.model);
+            car1._properties.model = 'Audi';
+            car1._properties.hello = 'Hello World';
+            console.log(car1._properties.model);
+            console.log('car1._properties.hello', car1._properties.hello);
+            
+            
+        </script>
+    </body>
+</html>

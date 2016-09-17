@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+       <p>Open browser console</p>
+        
+        <script type="text/javascript">
+            
+            /* functions are first class objects in JS */
+            function Car(model, color, doors){
+                                
+                this.CONFIG = {
+                    'model' : model,
+                    'color' : color,
+                    'doors' : doors
+                };
+                
+                Object.freeze(this.CONFIG);
+                //Object.seal(this.CONFIG);
+                                    
+            }
+            
+            Car.prototype = {
+                'run' : function() {
+                    return 'The car runing is ' + this.CONFIG.model;
+                },
+                'getModel' : function() {
+                    return this.CONFIG.model;
+                },
+                'getColor' : function() {
+                    return this.CONFIG.color;
+                },
+                'getDoors' : function() {
+                    return this.CONFIG.doors;
+                }
+            };
+            
+           
+                                       
+             
+            /* create a new instane of the object and the prototype functions will be applied */            
+            var car1 = new Car('Ford', 'Blue', 2);
+            console.log(car1);
+            console.log(car1.getModel());
+            console.log(car1.getColor());
+            console.log(car1.getDoors());
+            
+            /* You cannot stop developers from accessing the CONFIG object
+             * but you can stop them from adding properties or changing the CONFIG
+             * with Object.freeze
+             * 
+             * Seal will stop from adding but allow you to change the values.
+             */
+            
+            
+            console.log('car1.CONFIG.model', car1.CONFIG.model);
+            car1.CONFIG.model = 'Audi';
+            car1.CONFIG.hello = 'Hello World';
+            console.log(car1.CONFIG.model);
+            console.log('car1.CONFIG.hello', car1.CONFIG.hello);
+            
+            
+        </script>
+    </body>
+</html>
