@@ -10,6 +10,13 @@
         
         <script type="text/javascript">
             
+            /* JSON is just a data format, but in JavaScript it can hold any type of object
+             * 
+             * To access the properties use the dot notation or the array notation
+             * basicJSON.userId or basicJSON['userId']
+             * 
+             * array notation has the benefit of passing a variable key
+             */
             var basicJSON = {
                 'userId': 1,
                 'id': 1,
@@ -17,6 +24,13 @@
                 'completed': true
             };
             
+           
+             console.log( 'access title property', basicJSON.title );
+             console.log( 'access title property', basicJSON['title'] );
+             
+             var keyItem = 'id';
+             
+             console.log( 'access ' + keyItem + ' property', basicJSON[keyItem] );
             
             console.log( JSON.stringify(basicJSON) );
             
@@ -26,7 +40,7 @@
                 console.log(key, basicJSON[key] );
             }
             
-            /* Use this to support older browsers */
+            /* Use this to support all browsers */
             for ( var key in basicJSON ) {
                 if ( basicJSON.hasOwnProperty(key) ) {
                     console.log(key, basicJSON[key] );
