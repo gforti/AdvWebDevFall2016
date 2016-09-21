@@ -1,0 +1,27 @@
+extends layout
+
+block content
+    h1=title
+    p
+        a(href="./") Home
+    table(border="1")
+        thead   
+            tr
+                th author
+                th rating
+                th reviewText
+                th createdOn
+                th 
+        tbody
+        - each stuff in results
+            tr
+                td 
+                    = stuff.author
+                td 
+                    = stuff.rating
+                td 
+                    = stuff.reviewText
+                td 
+                    =stuff.createdOn.toDateString()
+                td
+                    a(href="./update?id=#{stuff._id}") Update
