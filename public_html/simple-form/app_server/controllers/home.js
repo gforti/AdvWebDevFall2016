@@ -38,6 +38,22 @@ module.exports.home = function(req, res){
 
 module.exports.view = function(req, res){
     
+     var id = req.params.id,
+         removed = '',
+         message = {};
+     if ( id ) {
+        Review.remove({ _id: id }, function(err) {
+            if (!err) {
+                message.type = 'notification!';
+            }
+            else {
+                message.type = 'error';
+            }
+        });
+        removed = id + ' has been removed';
+        console.log(message);
+     }
+     
      
     Review
     .find()
@@ -45,7 +61,8 @@ module.exports.view = function(req, res){
     
             res.render('view', { 
                 title: 'View Results',
-                results : results
+                results : results,
+                removed : removed
             });
     });
 };
