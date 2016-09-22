@@ -54,7 +54,7 @@ module.exports.view = function(req, res){
 
 module.exports.update = function(req, res){
     
-    var id = req.query.id;
+    var id = req.params.id;
     if (req.method === 'POST') {
          
          id = req.body._id;
@@ -76,7 +76,7 @@ module.exports.update = function(req, res){
     .exec(function(err, results){
     
          if ( results ) {
-         res.render('update', { 
+            res.render('update', { 
                 title: 'Update Results',
                 results : results
             });
