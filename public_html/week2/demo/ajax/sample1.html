@@ -11,7 +11,8 @@
         <button>Make Bad AJAX Call</button>
         <p>Open browser console</p>
         
-        <script type="text/javascript">
+        <script type="text/javascript">            
+            'use strict';
             
             document.querySelector('button:first-child').addEventListener('click', testAJAX.bind(null, '../data/todo.json'));
             document.querySelector('body > button:nth-child(2)').addEventListener('click', testAJAX.bind(null, 'data/todo.json'));
