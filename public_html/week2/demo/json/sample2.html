@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style type="text/css">                       
+            .link {
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        
+        <h1>User Content</h1>
+        <ul class="links"></ul>
+        <div class="content"></div>
+        
+        
+        <script type="text/javascript">
+             'use strict';
+             var basicJSON = [
+                 {
+                    'userId': 15564,
+                    'id': 1,
+                    'title': 'quo adipisci enim quam ut ab',
+                    'completed': true
+                },
+                {
+                    "userId": 13443,
+                    "id": 2,
+                    "title": "quis ut nam facilis et officia qui",
+                    "completed": false
+                 }
+            ];
+            
+            
+            function displayList(selector, list) {
+                var dom = document.querySelector(selector);
+                /* this document fragment is just for performance 
+                 * We create all the elements to add to the page
+                 * add them to the fragment, then add the fragment to
+                 * the page.  Much faster than just adding all the
+                 * elements to the page one at a time
+                 * 
+                 */
+                var docfrag = document.createDocumentFragment();
+                
+                /* JavaScript now has built in foreach loops for arrays */
+                list.forEach(function(value) {
+                    /* you can use the creaeElement tag to create any HTML element you want */
+                    var li = document.createElement("li");            
+                    li.textContent = value.userId;
+                    /* you can set any attribute using the function below for any Created element */
+                    li.setAttribute('class', 'link');
+                    /*you can even attach events to the element */
+                    li.addEventListener('click', displayContent.bind(null, 'div.content', value));
+                    docfrag.appendChild(li);
+                });
+                
+                /* after the fragment is completed we can add it to the page */
+                dom.appendChild(docfrag);
+            }
+            
+            function displayContent(selector, item) {
+                var dom = document.querySelector(selector);
+                var docfrag = document.createDocumentFragment();
+                
+                /* remove any child elements */
+                while (dom.firstChild) {
+                    dom.removeChild(dom.firstChild);
+                }   
+                
+                
+                docfrag.appendChild( createParagraphElement('ID: ', item.id) );
+                docfrag.appendChild( createParagraphElement('Title: ', item.title) );
+                 
+                var completed = createParagraphElement('Completed: ', item.completed);
+                completed.setAttribute('class', 'link');
+                completed.addEventListener('click', function(){
+                     item.completed = !item.completed;
+                     displayContent(selector, item);
+                 });
+                 
+                docfrag.appendChild( completed );
+                dom.appendChild(docfrag);
+            }
+            
+            /* custom function to generate a template for our view */
+            function createParagraphElement(label, text) {
+                var pTag = document.createElement('p'),
+                    strongTag = document.createElement('strong'),
+                    strongText = document.createTextNode(label),
+                    pText = document.createTextNode(text);
+          
+                    strongTag.appendChild(strongText);
+                    pTag.appendChild(strongTag);  
+                    pTag.appendChild(pText);  
+                    return pTag;
+            }
+            
+             
+             
+            window.addEventListener('load', displayList.bind(null, 'ul.links', basicJSON));
+             
+        </script>
+    </body>
+</html>
