@@ -28,10 +28,10 @@
             'use strict';
           
         var httpRequest;
-        document.querySelector('button.good').addEventListener('click', makeRequest.bind(null, '../data/todo.json') );
-        document.querySelector('button.bad').addEventListener('click', makeRequest.bind(null, 'data/todo.json') );
+        document.querySelector('button.good').addEventListener('click', makeRequest.bind(null, '../data/todo.json', alertContents) );
+        document.querySelector('button.bad').addEventListener('click', makeRequest.bind(null, 'data/todo.json', alertContents) );
 
-        function makeRequest(url) {
+        function makeRequest(url, callback) {
             
           httpRequest = new XMLHttpRequest();
 
@@ -40,7 +40,7 @@
             return false;
           }
           
-          httpRequest.addEventListener('readystatechange', alertContents);
+          httpRequest.addEventListener('readystatechange', callback);
           httpRequest.open('GET', url);
           httpRequest.send();
         }
