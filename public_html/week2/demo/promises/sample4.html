@@ -31,7 +31,7 @@
                      function httpResolve() {                        
                         if ( this.status >= 200 && this.status < 300 ) {
                             // Performs the function "resolve" when this.status is equal to 2xx
-                            resolve(this.response);
+                            resolve(JSON.parse(this.response));
                         } else {
                             // Performs the function "reject" when this.status is different than 2xx
                             reject(this.statusText);
@@ -52,7 +52,7 @@
             
             var callback = {
               success: function(data) {
-                console.log(1, 'success', JSON.parse(data));
+                console.log(1, 'success', data);
               },
               error: function(data) {
                 console.log(2, 'error', data);
