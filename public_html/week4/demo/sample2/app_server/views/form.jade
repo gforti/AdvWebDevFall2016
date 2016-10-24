@@ -1,0 +1,12 @@
+extends layout
+
+block content
+ h1=title
+ p
+    a(href="./") Index
+ h2=message
+ form.form-horizontal(action="/form", method="post", role="form")
+        .form-group
+          label.control-label(for="name") Author         
+            input#name.form-control(name="author")        
+        input(type="submit" value="Add my review") 
