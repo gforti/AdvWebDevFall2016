@@ -1,7 +1,7 @@
 /* GET 'home info' page */
 
 
-var Review = require('../models/review');;
+var Review = require('../models/review');
 
 module.exports.home = function(req, res){
     
@@ -90,6 +90,7 @@ module.exports.view = function(req, res){
 module.exports.update = function(req, res){
     
     var id = req.params.id;
+    var msg = '';
     if (req.method === 'POST') {
          
          id = req.body._id;
@@ -102,7 +103,7 @@ module.exports.update = function(req, res){
         var options = {};
         var callback = function(){};
         Review.update(query, update, options, callback);
-         
+        msg = 'data has been updated';
      }
     
     
@@ -113,6 +114,7 @@ module.exports.update = function(req, res){
          if ( results ) {
             res.render('update', { 
                 title: 'Update Results',
+                message: msg,
                 results : results
             });
         } else {
