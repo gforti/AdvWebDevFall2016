@@ -3,3 +3,8 @@ body {
     background-color: #285e8e;
     color: #faebcc;
 }
+
+table tbody tr:hover {
+    background-color: orange;
+    color: black;
+}
