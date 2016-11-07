@@ -69,7 +69,7 @@ module.exports.reviewsCreate = function(req, res) {
           console.log(err);
           sendJSONresponse(res, 400, err);
         } else {
-          console.log(location);
+          console.log(dataSaved);
           sendJSONresponse(res, 201, dataSaved);
         }
     });
