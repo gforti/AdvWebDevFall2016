@@ -24,27 +24,17 @@ module.exports.reviewsReadAll = function(req, res) {
 
 module.exports.reviewsReadOne = function(req, res) {
     
-    if (req.params && req.params.reviewid) {
-      console.log('Getting single review with id =', req.params.reviewid );
-      Review
-      .findById(req.params.reviewid)
-      .exec(function(err, results){
-
-          if ( results ) {
-             sendJSONresponse(res, 200, results);
-          } else {
-              sendJSONresponse(res, 404, {
-                "message": "reviewid not found"
-              });
-          }
-
-      });
-
-    } else {
+    
+    reviewDAO.reviewsReadOne(req.params.reviewid).then(function(results) {
+         sendJSONresponse(res, 200, results);
+     }, function(err){
         sendJSONresponse(res, 404, {
             "message": "reviewid not found"
         });
-    }
+     });
+    
+    
+   
 };
 
 
