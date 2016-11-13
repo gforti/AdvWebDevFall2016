@@ -1,6 +1,2 @@
- 'use strict';
-
-var myApp = angular.module('myApp', [
-  'appControllers',
-  'appServices'
-]);
+'use strict';
+angular.module('app.service', []);

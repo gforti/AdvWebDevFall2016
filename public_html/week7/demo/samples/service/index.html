@@ -5,9 +5,10 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
-    <body ng-app="myApp">
+    <body ng-app="app.service">
                
-        <div ng-controller="MyController">           
+        <div ng-controller="MyController as vm">
+            <p>{{vm.phones | json}} </p>
         </div>
 
         <script src="../../js/lib/angular.js" type="text/javascript"></script>

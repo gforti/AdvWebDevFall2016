@@ -1,21 +1,31 @@
-'use strict';
+(function() {
 
-var appControllers = angular.module('appControllers', []);
+    'use strict';
+    angular
+        .module('app.service')
+        .controller('MyController', MyController);
 
-appControllers.controller('MyController', ['$scope', 'phonesProvider', function($scope, phonesProvider) {
+    MyController.$inject = ['PhonesService'];
     
-    
-    phonesProvider.getPhones().success(function(response) {
-         console.log(response);    
-    }).error(function (response, status) {
-       console.log(response);
-    });
-    
-    
-   
-   console.log('loaded');
-    
-}]);
+    function MyController(PhonesService) {
+        var vm = this;
+        vm.phones = [];
+        
+        activate();
 
+        function activate() {
+           console.log('activate Started');
+           
+            PhonesService.getPhones()
+                .then(function(data) {
+                    vm.phones = data;
+                    console.log('Activated phones');
+                    console.log(vm.phones);
+                });            
+        }   
+        
+        
 
+    }
 
+})();
