@@ -23,9 +23,7 @@
                     console.log(vm.phones);
                 });            
         }   
-        
-        
-
+           
     }
 
 })();
