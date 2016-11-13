@@ -1,26 +1,32 @@
- 'use strict';
+ (function() {
 
-var myApp = angular.module('myApp', [
-  'ngRoute',
-  'appControllers'
-]);
+    'use strict'; 
+    angular
+        .module('app.route', ['ngRoute'])
+        .config(config);
+  
+    config.$inject = ['$routeProvider'];
 
-myApp.config(['$routeProvider',
-  function($routeProvider) {
-    $routeProvider.
-        when('/', {
-            templateUrl: 'partials/home.html',
-             controller: 'HomeController'
-        }).
-        when('/Book/:bookId', {
-            templateUrl: 'partials/book.html',
-            controller: 'BookController',
-        }).
-        when('/Book/:bookId/ch/:chapterId', {
-            templateUrl: 'partials/chapter.html',
-            controller: 'ChapterController'
-        }).
-        otherwise({
-          redirectTo: '/'
-        });
-  }]);
+    function config($routeProvider) {
+      $routeProvider.
+          when('/', {
+              templateUrl: 'partials/home.html',
+              controller: 'HomeController',
+              controllerAs: 'vm'
+          }).
+          when('/Book/:bookId', {
+              templateUrl: 'partials/book.html',
+              controller: 'BookController',
+              controllerAs: 'vm'
+          }).
+          when('/Book/:bookId/ch/:chapterId', {
+              templateUrl: 'partials/chapter.html',
+              controller: 'ChapterController',
+              controllerAs: 'vm'
+          }).
+          otherwise({
+            redirectTo: '/'
+          });
+    }
+
+})();

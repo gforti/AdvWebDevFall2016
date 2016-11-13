@@ -5,11 +5,11 @@
         .module('app.service')
         .factory('PhonesService', PhonesService);
 
-    PhonesService.$inject = ['$http'];
+    PhonesService.$inject = ['$http', 'REQUEST'];
 
-    function PhonesService($http) {
+    function PhonesService($http, REQUEST) {
 
-        var url = '../../data/phones.json';
+        var url = REQUEST.Phones;
         var service = {
             'getPhones': getPhones
         };
