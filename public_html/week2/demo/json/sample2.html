@@ -54,7 +54,7 @@
                     /* you can set any attribute using the function below for any Created element */
                     li.setAttribute('class', 'link');
                     /*you can even attach events to the element */
-                    li.addEventListener('click', displayContent.bind(null, 'div.content', value));
+                    li.addEventListener('click', window.displayContent.bind(null, 'div.content', value));
                     docfrag.appendChild(li);
                 });
                 
@@ -72,10 +72,10 @@
                 }   
                 
                 
-                docfrag.appendChild( createParagraphElement('ID: ', item.id) );
-                docfrag.appendChild( createParagraphElement('Title: ', item.title) );
+                docfrag.appendChild( window.createParagraphElement('ID: ', item.id) );
+                docfrag.appendChild( window.createParagraphElement('Title: ', item.title) );
                  
-                var completed = createParagraphElement('Completed: ', item.completed);
+                var completed = window.createParagraphElement('Completed: ', item.completed);
                 completed.setAttribute('class', 'link');
                 completed.addEventListener('click', function(){
                      item.completed = !item.completed;

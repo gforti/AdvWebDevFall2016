@@ -16,8 +16,18 @@
             
             document.querySelector('button:first-child').addEventListener('click', testAJAX.bind(null, '../data/todo.json'));
             document.querySelector('body > button:nth-child(2)').addEventListener('click', testAJAX.bind(null, 'data/todo.json'));
+           
+            function testAJAX(url) {
+                console.log(url);
+                console.log('called');
+                var xmlhttp = new XMLHttpRequest();               
+                xmlhttp.addEventListener('load', window.reqListener.bind(xmlhttp, 'load'));
+                xmlhttp.addEventListener('error', window.reqListener.bind(xmlhttp, 'error'));
+                xmlhttp.open('GET', url);
+                xmlhttp.send();
+            }
             
-            function reqListener(type) {
+             function reqListener(type) {
                 console.log(type);
                 console.log(this);
                 console.log(this.responseText);
@@ -26,17 +36,6 @@
                 console.log(this.readyState);
                 console.log(this.responseURL);
                 console.log(this.DONE);
-            }
-            
-
-            function testAJAX(url) {
-                console.log(url);
-                console.log('called');
-                var xmlhttp = new XMLHttpRequest();               
-                xmlhttp.addEventListener('load', reqListener.bind(xmlhttp, 'load'));
-                xmlhttp.addEventListener('error', reqListener.bind(xmlhttp, 'error'));
-                xmlhttp.open('GET', url);
-                xmlhttp.send();
             }
             
         </script>

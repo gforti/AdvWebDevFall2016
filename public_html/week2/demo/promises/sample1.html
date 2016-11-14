@@ -21,7 +21,7 @@ and open the template in the editor.
             
             document.querySelector('button').addEventListener('click', testPromise);
             
-            var log = document.querySelector('div.log');
+            var divLog = document.querySelector('div.log');
              
             function testPromise() {
                 var promise = new Promise(function(resolve, reject) {
@@ -39,10 +39,10 @@ and open the template in the editor.
 
 
                 promise.then(function(result) {
-                    log.insertAdjacentHTML('beforeend', result +'<br/>');
+                    window.divLog.insertAdjacentHTML('beforeend', result +'<br/>');
                     console.log(result); // "Stuff worked!"
                 }, function(err) {
-                    log.insertAdjacentHTML('beforeend', err +'<br/>');
+                    window.divLog.insertAdjacentHTML('beforeend', err +'<br/>');
                     console.log(err); // Error: "It broke"
                 });
             }

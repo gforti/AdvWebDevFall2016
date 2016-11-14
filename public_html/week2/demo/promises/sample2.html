@@ -18,7 +18,7 @@
             document.querySelector('button').addEventListener('click', testPromise);
 
             function testPromise() {
-                var thisPromiseCount = ++promiseCount;
+                var thisPromiseCount = ++window.promiseCount;
 
                 var log = document.querySelector('div.log');
                 var start = performance.now();
