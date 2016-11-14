@@ -13,6 +13,12 @@
         vm.name = "HomeController";
         vm.params = $routeParams;
 
+        activate();
+
+        ////////////
+        
+        function activate() {}
+        
     }
 
 })();

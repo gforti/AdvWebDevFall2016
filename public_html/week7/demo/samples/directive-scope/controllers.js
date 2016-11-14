@@ -12,9 +12,17 @@
 
         vm.title = "Widget title";
         vm.spice = 'very';
-        vm.spicy = function(spice) {
+        vm.spicy = spicy;
+        
+        activate();
+
+        ////////////
+        
+        function activate() {}  
+        
+        function spicy(spice) {
             vm.spice = spice;
-        };
+        }
 
     }
 

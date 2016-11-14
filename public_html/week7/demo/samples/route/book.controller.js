@@ -12,7 +12,13 @@
 
         vm.name = "BookController";
         vm.params = $routeParams;
+      
+        activate();
 
+        ////////////
+        
+        function activate() {}  
+       
     }
 
 })();

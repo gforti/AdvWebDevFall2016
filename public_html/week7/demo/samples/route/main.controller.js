@@ -14,6 +14,12 @@
         vm.$location = $location;
         vm.$routeParams = $routeParams;
      
+        activate();
+
+        ////////////
+        
+        function activate() {}
+        
     }
 
 })();

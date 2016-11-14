@@ -13,6 +13,11 @@
         vm.name = "ChapterController";
         vm.params = $routeParams;
 
+        activate();
+
+        ////////////
+        
+        function activate() {}  
     }
 
 })();
