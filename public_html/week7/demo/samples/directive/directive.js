@@ -24,7 +24,7 @@
             });
 
             element.on('click', function(event) {
-              // Prevent default dragging of selected content
+              // Prevent default function of selected content
               event.preventDefault();
               element.append('<p>Element Clicked on</p>');
             });
