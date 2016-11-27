@@ -1,0 +1,22 @@
+<h1>{{vm.title}}</h1>
+
+<div class="content">
+        
+    <p ng-class="{'msg' : vm.message.length}">{{vm.message}}</p>
+    <p><a href="#/">Home</a></p>
+    
+    <br />
+    <br />
+    <div class="form">
+        <label>Author</label>            
+        <input type="text" name="author" value="" placeholder="" ng-model="vm.data.author" />
+        <br /> <br />
+        <label>Rating</label>
+        <input type="number" max="5" min="1" name="rating" value="" ng-model="vm.data.rating" />
+        <br /> <br />
+        <label>Review Text:</label>
+        <textarea name="reviewText" ng-model="vm.data.reviewText"></textarea>
+        <br /> <br />   
+        <input type="submit" value="Submit" ng-click="vm.submit()" />
+    </div>
+</div>
