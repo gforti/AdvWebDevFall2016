@@ -1,13 +1,2 @@
 node_modules/
-/public_html/week2/lab2/
-/public_html/week3/lab/
-/public_html/week4/demo/sample2/node_modules/
-/public_html/students/
-/public_html/week5/demo/sample1/node_modules/
-/public_html/week6/demo/sample-code/
-/public_html/week6/demo/server1/node_modules/
-/public_html/week6/demo/server2/node_modules/
-/public_html/week7/demo/sample-app/
-/lab/
-.zip
-/public_html/week7/angular-sample/
+lab/
