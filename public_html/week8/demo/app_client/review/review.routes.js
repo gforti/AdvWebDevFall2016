@@ -16,7 +16,7 @@
           }).
           when('/add', {
               templateUrl: '/review/review-form.view.html',
-              controller: 'ReviewAddController',
+              controller: 'ReviewCreateController',
               controllerAs: 'vm'
           }).
           when('/update/:id', {

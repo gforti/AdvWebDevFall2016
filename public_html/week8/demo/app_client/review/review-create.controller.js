@@ -3,11 +3,11 @@
     'use strict';
     angular
         .module('app.review')
-        .controller('ReviewAddController', ReviewAddController);
+        .controller('ReviewCreateController', ReviewCreateController);
 
-    ReviewAddController.$inject = ['ReviewService'];
+    ReviewCreateController.$inject = ['ReviewService'];
     
-    function ReviewAddController(ReviewService) {
+    function ReviewCreateController(ReviewService) {
         var vm = this;
 
         vm.data = {

@@ -26,7 +26,7 @@ var appClientFiles = [
   'app_client/review/review.constants.js',
   'app_client/review/review.service.js',
   'app_client/review/review-home.controller.js',
-  'app_client/review/review-add.controller.js',
+  'app_client/review/review-create.controller.js',
   'app_client/review/review-update.controller.js' 
 ];
 var uglified = uglifyJs.minify(appClientFiles, { compress : false });
