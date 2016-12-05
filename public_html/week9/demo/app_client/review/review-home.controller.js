@@ -5,15 +5,15 @@
         .module('app.review')
         .controller('ReviewHomeController', ReviewHomeController);
 
-    ReviewHomeController.$inject = ['ReviewService', '$window'];
+    ReviewHomeController.$inject = ['ReviewService', '$window', 'AuthenticationService'];
     
-    function ReviewHomeController(ReviewService, $window) {
+    function ReviewHomeController(ReviewService, $window, AuthenticationService) {
         var vm = this;
 
         vm.reviews = [];
         vm.deleteReview = deleteReview;
         vm.message = '';
-        
+        vm.isLoggedIn = AuthenticationService.isLoggedIn();
         activate();
 
         ////////////

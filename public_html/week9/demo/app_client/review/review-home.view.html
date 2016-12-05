@@ -1,6 +1,6 @@
 <h1>Review Table</h1>
 
-<div class="content">
+<div class="content" ng-show="vm.isLoggedIn">
     
     <h3>Search</h3>
     <!-- https://docs.angularjs.org/api/ng/filter/filter -->
@@ -32,3 +32,5 @@
     </table>
         
 </div>
+
+<div class="msg" ng-hide="vm.isLoggedIn">Please Log in <p><a href="#/register">Register</a> | <a href="#/login">Login</a></p> </div>

@@ -1,0 +1,23 @@
+<h1>Login</h1>
+
+<div class="content">
+    <div class="form">
+    
+      <p class="lead">Not a member? Please <a href="/#register">register</a> first.</p>
+      <form ng-submit="vm.onSubmit()">        
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input type="email" class="form-control" id="email" placeholder="Enter email" ng-model="vm.credentials.email">
+        </div>
+          <br /> <br />
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" id="password" placeholder="Password" ng-model="vm.credentials.password">
+        </div>
+           <br /> <br />
+        <button type="submit" class="btn btn-default">Sign in!</button>
+      </form>
+      <div role="alert" ng-show="vm.formError" class="alert alert-danger">{{ vm.formError }}</div>
+  
+    </div>
+</div>

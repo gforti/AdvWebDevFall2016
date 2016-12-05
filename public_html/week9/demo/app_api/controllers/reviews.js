@@ -16,8 +16,7 @@ module.exports.reviewsReadAll = function(req, res) {
         sendJSONresponse(res, 404, err);
      });
         
-    console.log('Getting all reviews');
-        
+            
 };
 
 
@@ -44,9 +43,7 @@ module.exports.reviewsReadOne = function(req, res) {
  *   /api/v1/reviews 
  */
 module.exports.reviewsCreate = function(req, res) {
-    
-    console.log('Creating a review with data ', req.body);
-    
+       
     Review.create({
           author: req.body.author,
           rating: req.body.rating,
@@ -113,11 +110,9 @@ module.exports.reviewsDeleteOne = function(req, res) {
     .findByIdAndRemove(req.params.reviewid)
     .exec( function(err, reviewData) {
         if (err) {
-            console.log(err);
             sendJSONresponse(res, 404, err);
             return;
         }
-          console.log("Review id " + req.params.reviewid + " deleted");
           sendJSONresponse(res, 204, null);
                 
     });

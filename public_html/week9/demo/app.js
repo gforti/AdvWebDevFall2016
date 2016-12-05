@@ -30,7 +30,13 @@ var appClientFiles = [
   'app_client/review/review.service.js',
   'app_client/review/review-home.controller.js',
   'app_client/review/review-create.controller.js',
-  'app_client/review/review-update.controller.js' 
+  'app_client/review/review-update.controller.js',
+  'app_client/auth/auth.module.js',
+  'app_client/auth/auth.routes.js',
+  'app_client/auth/auth.constants.js',
+  'app_client/auth/authentication.service.js',
+  'app_client/auth/register.controller.js',
+  'app_client/auth/login.controller.js'
 ];
 var uglified = uglifyJs.minify(appClientFiles, { compress : false });
 

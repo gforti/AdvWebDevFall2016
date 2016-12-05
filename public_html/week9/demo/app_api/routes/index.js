@@ -11,7 +11,7 @@ var ctrlReviews = require('../controllers/reviews');
 var ctrlAuth = require('../controllers/authentication');
 
 // reviews
-router.get('/reviews', ctrlReviews.reviewsReadAll);
+router.get('/reviews', auth, ctrlReviews.reviewsReadAll);
 router.get('/reviews/:reviewid', auth, ctrlReviews.reviewsReadOne);
 router.post('/reviews', auth, ctrlReviews.reviewsCreate);
 router.put('/reviews/:reviewid', auth, ctrlReviews.reviewsUpdateOne);

@@ -7,9 +7,9 @@
         .module('app.review')
         .factory('ReviewService', ReviewService);
 
-    ReviewService.$inject = ['$http', 'REQUEST'];
+    ReviewService.$inject = ['$http', 'REQUEST', 'AuthenticationService'];
 
-    function ReviewService($http, REQUEST) {
+    function ReviewService($http, REQUEST, AuthenticationService) {
 
         var url = REQUEST.Reviews;
         var service = {
@@ -24,7 +24,7 @@
         ////////////
 
         function getReviews() {
-            return $http.get(url)
+            return $http.get(url, tokenHeader())
                     .then(getComplete, getFailed);                    
 
             function getComplete(response) { 
@@ -38,8 +38,7 @@
         
          function getReview(_id) {
             var oneUrl = url + '/' + _id;
-            return $http.get(oneUrl)
-                    .then(getComplete, getFailed);                    
+            return $http.get(oneUrl, tokenHeader() ).then(getComplete, getFailed);                    
 
             function getComplete(response) { 
                 return response.data;
@@ -53,7 +52,7 @@
         function deleteReview(_id) {
             var delUrl = url + '/' + _id;
             
-            return $http.delete(delUrl)
+            return $http.delete(delUrl, tokenHeader() )
                     .then(getComplete, getFailed);                    
 
             function getComplete(response) { 
@@ -67,7 +66,7 @@
         
         
         function addReview(data) {            
-            return $http.post(url, data)
+            return $http.post(url, data, tokenHeader() )
                     .then(getComplete, getFailed);                    
 
             function getComplete(response) { 
@@ -82,7 +81,7 @@
         function updateReview(_id, data) {
             var updateUrl = url + '/' + _id;
             
-            return $http.put(updateUrl, data)
+            return $http.put(updateUrl, data, tokenHeader() )
                     .then(getComplete, getFailed);                    
 
             function getComplete(response) { 
@@ -94,6 +93,14 @@
             }
         }
         
+        
+        function tokenHeader() {
+            return {
+                'headers': {
+                  'Authorization': 'Bearer '+ AuthenticationService.getToken()
+                }
+            };
+        }
         
 
     }

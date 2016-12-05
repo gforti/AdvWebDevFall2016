@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+    <body>
+        <style type="text/css">
+            textarea {
+                width: 500px;
+                height: 100px;
+            }
+            
+            textarea[name="results"] {
+                 height: 300px;
+            }
+        </style>
+        
+        <h1>Rest API Demo</h1>
+        
+        Verb/HTTP Method:<br />
+        <select name="verb">
+            <option value="POST">POST</option>           
+        </select>
+        <br />
+        <br />
+        Resource for endpoint:<br />
+        <input name="resource" value="register/" />
+        <br />
+        <br />
+        Data<br />   
+        Name <input type="text" name="fullname" value="" />
+        <br />
+        email <input type="text" name="email" >        
+        <br />
+        password <input type="text" name="password" >
+        <br />
+        <br />
+        <button>Make Call</button>
+        <h3>Results</h3>
+        
+        <textarea name="results"></textarea>
+        
+        
+        
+        <script type="text/javascript">
+        
+            var callBtn = document.querySelector('button');
+            
+            callBtn.addEventListener('click', makeCall);
+        
+            function makeCall() {
+                var verbfield = document.querySelector('select[name="verb"]');
+                var verb = verbfield.options[verbfield.selectedIndex].value;
+                var resource = document.querySelector('input[name="resource"]').value;
+                var data = {
+                    'name' : document.querySelector('input[name="fullname"]').value,
+                    'email' : document.querySelector('input[name="email"]').value,
+                    'password' : document.querySelector('input[name="password"]').value
+                };            
+                var results = document.querySelector('textarea[name="results"]');
+
+                var url = 'http://localhost:3000/api/v1/' + resource;
+
+                makeRequest(url, verb, data).then(function(response){
+                    results.value = response;
+                },function(err){
+                    console.log(err);
+                });
+                 
+            }
+            
+            
+            function makeRequest(url, verb, data) {
+            
+                var promise = new Promise( httpPromise );
+                
+                function httpPromise(resolve, reject) {
+                    var httpRequest = new XMLHttpRequest();
+
+                     if ( !httpRequest ) {
+                       reject('Giving up :( Cannot create an XMLHTTP instance');
+                     }
+                     
+                     httpRequest.open(verb, url, true);
+                     
+                     if ( verb === 'GET' ) {
+                        httpRequest.send(null);
+                    } else {
+                        httpRequest.setRequestHeader('Content-type','application/json;charset=UTF-8');
+                        httpRequest.send(JSON.stringify(data));
+                    }
+                     
+                     httpRequest.addEventListener('load', httpResolve.bind(httpRequest));
+                     httpRequest.addEventListener('error', httpReject.bind(httpRequest));
+                     
+                     function httpResolve() {                        
+                        if ( this.status >= 200 && this.status < 300 ) {
+                            // Performs the function "resolve" when this.status is equal to 2xx
+                            resolve(this.response);
+                        } else {
+                            // Performs the function "reject" when this.status is different than 2xx
+                            reject(this.statusText);
+                        }                          
+                     }
+                     
+                     function httpReject() {
+                         reject(this.statusText);
+                     }
+
+                }
+                
+                // Return the promise
+                return promise;
+            }
+            
+            
+        </script>
+    </body>
+</html>

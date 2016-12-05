@@ -9,7 +9,7 @@
 
     function config($routeProvider) {
       $routeProvider.
-          when('/', {
+          when('/review', {
               templateUrl: '/review/review-home.view.html',
               controller: 'ReviewHomeController',
               controllerAs: 'vm'
@@ -25,7 +25,7 @@
               controllerAs: 'vm'
           }).
           otherwise({
-            redirectTo: '/'
+            redirectTo: '/review'
           });
     }
 
