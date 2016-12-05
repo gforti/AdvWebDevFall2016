@@ -4,3 +4,5 @@
 -e.g. C://../../../week8/demo
 -then you can run the command nodemon server_start.js (or what ever your start app file is)
 -you should be able to update and not have to restart the server.
+
+-Create a .env file and add the following line JWT_SECRET=thisIsASecretString
