@@ -1,0 +1,34 @@
+<h1>Review Table</h1>
+
+<div class="content">
+    
+    <h3>Search</h3>
+    <!-- https://docs.angularjs.org/api/ng/filter/filter -->
+    <input ng-model="searchText">
+    <br />
+    <br /> 
+    <p ng-class="{'msg' : vm.message.length}">{{vm.message}}</p>
+    <p><a href="#/add/">Add New Review</a></p>
+    <table class="gridtable">
+        <thead>
+            <tr>
+                <th>Author</th>
+                <th>Rating</th>                
+                <th>Review Text</th>                
+                <th>Created On</th>                
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>    
+        
+        <tr ng-repeat="review in vm.reviews | filter:searchText">
+            <td>{{review.author}}</td>                  
+            <td>{{review.rating}}</td>
+            <td>{{review.reviewText}}</td>
+            <td>{{review.createdOn}}</td>
+            <td><a ng-href="#/update/{{review._id}}">Update</a></td>
+            <td><button ng-click="vm.deleteReview(review._id)">Delete</button></td>
+        </tr>
+    </table>
+        
+</div>

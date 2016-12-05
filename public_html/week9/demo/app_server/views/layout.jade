@@ -1,0 +1,14 @@
+doctype html
+html
+  head
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title= title   
+    link(rel='stylesheet', href='/css/style.css')
+  body(ng-app="app")
+    .container
+        div(ng-view ng-cloak)
+            block content
+
+    script(src='/lib/angular.js')
+    script(src='/lib/angular-route.js')
+    script(src='/lib/review.min.js')
